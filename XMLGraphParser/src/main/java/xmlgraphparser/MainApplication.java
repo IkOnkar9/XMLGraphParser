@@ -10,7 +10,6 @@ public class MainApplication {
 		InputStream inputStream = null;
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		
-		//test1
 		try (Scanner scannerObject = new Scanner(System.in)) {  
 			
 			System.out.println("Please select, Which file should be loaded.\n" 
