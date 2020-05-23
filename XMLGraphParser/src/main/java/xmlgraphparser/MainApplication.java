@@ -11,7 +11,7 @@ public class MainApplication {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		
 		//test1
-		try (Scanner scannerObject = new Scanner(System.in)) {  
+		try (Scanner scannerObject = new Scanner(System.in)) { 
 			
 			System.out.println("Please select, Which file should be loaded.\n" 
 					+ "Type : 1        --- For smallGraph.xml\n"
