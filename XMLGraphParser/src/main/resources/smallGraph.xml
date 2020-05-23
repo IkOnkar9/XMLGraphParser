@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE graph [
+	<!ELEMENT graph (node)*>
+	<!ELEMENT node (edge)*>
+	<!ELEMENT edge EMPTY>
+
+	<!ATTLIST node
+		label CDATA #REQUIRED
+	>
+	<!ATTLIST edge
+		to     CDATA #REQUIRED
+		weight CDATA #REQUIRED
+	>
+]>
+
+
+<graph>
+	<node label="(77|77)">
+		<edge to="(77|77)" weight="0.0" />
+		<edge to="(91|61)" weight="339.9690043005234" />
+		<edge to="(73|62)" weight="208.11876706661928" />
+		<edge to="(95|44)" weight="102.03846769531336" />
+	</node>
+	<node label="(29|47)">
+		<edge to="(77|77)" weight="68.22294803428434" />
+		<edge to="(29|47)" weight="0.0" />
+		<edge to="(60|48)" weight="343.5893065713213" />
+		<edge to="(73|62)" weight="434.6427028341441" />
+		<edge to="(84|75)" weight="434.8377991580031" />
+	</node>
+	<node label="(91|61)">
+		<edge to="(91|61)" weight="0.0" />
+		<edge to="(60|48)" weight="75.14667174040068" />
+		<edge to="(41|20)" weight="296.1395618525203" />
+		<edge to="(95|44)" weight="53.213406636520034" />
+	</node>
+	<node label="(19|54)">
+		<edge to="(77|77)" weight="231.7787367271028" />
+		<edge to="(19|54)" weight="0.0" />
+		<edge to="(15|53)" weight="112.90831173046064" />
+		<edge to="(41|20)" weight="386.64341693909984" />
+	</node>
+	<node label="(60|48)">
+		<edge to="(29|47)" weight="422.56236972213134" />
+		<edge to="(19|54)" weight="238.53847509886685" />
+		<edge to="(60|48)" weight="0.0" />
+		<edge to="(95|44)" weight="516.2622890113863" />
+	</node>
+	<node label="(73|62)">
+		<edge to="(19|54)" weight="285.63337139882196" />
+		<edge to="(73|62)" weight="0.0" />
+		<edge to="(95|44)" weight="52.058275405168494" />
+	</node>
+	<node label="(15|53)">
+		<edge to="(77|77)" weight="81.03683691519655" />
+		<edge to="(29|47)" weight="501.20660668860046" />
+		<edge to="(73|62)" weight="213.2732159874106" />
+		<edge to="(15|53)" weight="0.0" />
+		<edge to="(41|20)" weight="47.09963034331464" />
+		<edge to="(95|44)" weight="123.8735858331787" />
+	</node>
+	<node label="(84|75)">
+		<edge to="(29|47)" weight="215.66368031407424" />
+		<edge to="(60|48)" weight="473.25588887797403" />
+		<edge to="(84|75)" weight="0.0" />
+		<edge to="(41|20)" weight="393.17598922227296" />
+		<edge to="(95|44)" weight="286.2445663832234" />
+	</node>
+	<node label="(41|20)">
+		<edge to="(29|47)" weight="268.36502928384897" />
+		<edge to="(19|54)" weight="46.32433260090707" />
+		<edge to="(84|75)" weight="264.33563047964253" />
+		<edge to="(41|20)" weight="0.0" />
+	</node>
+	<node label="(95|44)">
+		<edge to="(77|77)" weight="39.546657567035446" />
+		<edge to="(29|47)" weight="512.4766252147283" />
+		<edge to="(91|61)" weight="231.91648886144174" />
+		<edge to="(60|48)" weight="211.7540796292269" />
+		<edge to="(95|44)" weight="0.0" />
+	</node>
+</graph>
