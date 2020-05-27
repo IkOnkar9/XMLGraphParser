@@ -16,7 +16,7 @@ import org.jgrapht.graph.DirectedWeightedPseudograph;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 
-public class GraphVisualizer extends JApplet {
+public class XMLGraphVisualizer extends JApplet {
 	private static final long serialVersionUID = 2202072534703043194L;
 	private static final Dimension DEFAULT_SIZE = new Dimension(530, 320);
 	private JGraphXAdapter<String, DefaultWeightedEdge> jgxAdapter;
@@ -48,7 +48,7 @@ public class GraphVisualizer extends JApplet {
 
 	public void showGraph(DirectedWeightedPseudograph<String, DefaultWeightedEdge> graph) {
 
-		GraphVisualizer applet = new GraphVisualizer();
+		XMLGraphVisualizer applet = new XMLGraphVisualizer();
 		applet.init(graph);
 		JFrame frame = new JFrame();
 		frame.getContentPane().add(applet);

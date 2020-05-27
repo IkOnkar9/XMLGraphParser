@@ -5,41 +5,43 @@ import java.util.Set;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
 
+import interfaces.GraphBuilder;
 
-public class GraphBuilder implements interfaces.GraphBuilder<Graph> {
-	Graph root;
-	Set<Graph> vertexNodes;
+
+public class XMLGraphBuilder implements GraphBuilder<String> {
+	XMLGraph root;
+	Set<String> vertexNodes;
 	Set<XEdge> edges;
-	public GraphBuilder(Graph root) {
+	public XMLGraphBuilder(XMLGraph root) {
 		this.root = root; 
 		this.edges = new LinkedHashSet<>();
 		this.vertexNodes = new LinkedHashSet<>();
 	}
 
 	@Override
-	public GraphBuilder addNode(Graph label) {
+	public XMLGraphBuilder addNode(String label) {
 		
 		this.vertexNodes.add(label);
 		return this;
 	}
 
 	@Override
-	public GraphBuilder addEdge(Graph from, Graph to, double weight) {
+	public XMLGraphBuilder addEdge(String from, String to, double weight) {
 		XEdge edge = new XEdge(from, to, weight);
 		this.edges.add(edge);
 		return this;
 	}
 
 	@Override
-	public Graph buildGraph() {
+	public XMLGraph buildGraph() {
 		
-		for (Graph eachVertex : vertexNodes) {
+		for (String eachVertex : vertexNodes) {
 			root.nodes.add(eachVertex);
-			root.graphObject.addVertex(eachVertex.label);
+			root.graphObject.addVertex(eachVertex);
 		}
 		for (XEdge eachEdge : edges) {
 			root.edges.add(eachEdge);
-			DefaultWeightedEdge edge =  root.graphObject.addEdge(eachEdge.from.label, eachEdge.to.label);
+			DefaultWeightedEdge edge =  root.graphObject.addEdge(eachEdge.from, eachEdge.to);
 			root.graphObject.setEdgeWeight(edge, eachEdge.weight);
 		}
 		return root;

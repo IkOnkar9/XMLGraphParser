@@ -11,12 +11,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class GraphParser implements interfaces.GraphParser<Graph> {
+import interfaces.GraphParser;
+
+public class XMLGraphParser implements GraphParser<String> {
 
 	@Override
-	public Graph parse(InputStream inputStream) throws ParserException, IOException {
+	public XMLGraph parse(InputStream inputStream) throws ParserException, IOException {
 
-		Graph graph = null;
+		XMLGraph graph = null;
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;
 		try {
@@ -24,24 +26,24 @@ public class GraphParser implements interfaces.GraphParser<Graph> {
 			Document document = builder.parse(inputStream);
 			document.getDocumentElement().normalize();
 			NodeList nodeList = document.getElementsByTagName("node");
-			graph = new Graph("XML_2_Graph");
-			GraphBuilder graphBuilder = new GraphBuilder(graph);
+			graph = new XMLGraph("XML_2_Graph");
+			XMLGraphBuilder graphBuilder = new XMLGraphBuilder(graph);
 			// Traverse through Each Vertexs
 			for (int eachNodeIndex = 0; eachNodeIndex < nodeList.getLength(); eachNodeIndex++) {
 				Node graphNode = (Node) nodeList.item(eachNodeIndex);
 				Element graphNodeElement = (Element) graphNode;
-				Graph fromGraphNode = new Graph(graphNodeElement.getAttribute("label"));
+				XMLGraph fromGraphNode = new XMLGraph(graphNodeElement.getAttribute("label"));
 				// Adding vertex to GraphBuilder
-				graphBuilder = graphBuilder.addNode(fromGraphNode);
+				graphBuilder = graphBuilder.addNode(fromGraphNode.label);
 				// Traverse through all edges in Each Vertex Nodes according to given XML Schema
 				NodeList edgeList = graphNodeElement.getElementsByTagName("edge");
 				for (int eachEdgeIndex = 0; eachEdgeIndex < edgeList.getLength(); eachEdgeIndex++) {
 					Node eachEdge = (Node) edgeList.item(eachEdgeIndex);
 					Element edgeElement = (Element) eachEdge;
-					Graph toGraphNode = new Graph(edgeElement.getAttribute("to"));
+					XMLGraph toGraphNode = new XMLGraph(edgeElement.getAttribute("to"));
 					String weight = edgeElement.getAttribute("weight");
 					// Adding Edge to GraphBuilder
-					graphBuilder = graphBuilder.addEdge(fromGraphNode, toGraphNode, Double.parseDouble(weight));
+					graphBuilder = graphBuilder.addEdge(fromGraphNode.label, toGraphNode.label, Double.parseDouble(weight));
 				}
 			}
 			// Building Graph

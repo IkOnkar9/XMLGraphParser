@@ -9,17 +9,15 @@ public class MainApplication {
 
 		InputStream inputStream = null;
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		
-		//test
-		try (Scanner scannerObject = new Scanner(System.in)) {
-			
-			System.out.println("Please select, Which file should be loaded.\n" 
-					+ "Type : 1        --- For smallGraph.xml\n"
-					+ "Type : 2        --- For mediumGraph.xml\n" 
-					+ "Type : 3        --- For largeGraph.xml\n"
-					+ "Type : 4        --- For hugeGraph.xml");
 
-			int graphChoice = scannerObject.nextInt();
+		// test
+		try (Scanner scannerObject = new Scanner(System.in)) {
+
+			System.out.println("Please select, Which file should be loaded:\n\n"
+					+ "Type : 1        --- For smallGraph.xml\n" + "Type : 2        --- For mediumGraph.xml\n"
+					+ "Type : 3        --- For largeGraph.xml\n" + "Type : 4        --- For hugeGraph.xml\n");
+
+			 int graphChoice = scannerObject.nextInt();
 			switch (graphChoice) {
 			case 1:
 				inputStream = classloader.getResourceAsStream("smallGraph.xml");
@@ -35,15 +33,18 @@ public class MainApplication {
 				break;
 			}
 
-			Graph graph = null;
+			XMLGraph graph = null;
 			// Creating Parser Object
-			GraphParser parser = new GraphParser();
+			XMLGraphParser parser = new XMLGraphParser();
+			
 			// Generating Graph Object from Given XML
 			graph = parser.parse(inputStream);
-			GraphPrinter printer = new GraphPrinter();
+			
 			// Printing Graph Data on Console and jFrame (In Graphics) as well
+			XMLGraphPrinter printer = new XMLGraphPrinter();
 			printer.printGraph(graph, null);
-		} catch(Exception e) {
+			
+		} catch (Exception e) {
 			System.out.println(e);
 		}
 
